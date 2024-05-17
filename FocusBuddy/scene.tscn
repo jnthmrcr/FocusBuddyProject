@@ -1,0 +1,371 @@
+[gd_scene load_steps=12 format=3 uid="uid://by4710qvqgeh3"]
+
+[ext_resource type="Texture2D" uid="uid://bsmkjjstyqadi" path="res://sprites/scratch/white16.png" id="1_84c1p"]
+[ext_resource type="Texture2D" uid="uid://cxkpjg3nhpnk1" path="res://sprites/scratch/boundsguide.png" id="4_dosp0"]
+[ext_resource type="FontFile" uid="uid://bmlpcu68pbnrl" path="res://fonts/threeseven.ttf" id="4_j1uq1"]
+[ext_resource type="Texture2D" uid="uid://blkxj7jacl6mg" path="res://sprites/scratch/froggie focus buddy_demo.png" id="5_rfd2s"]
+[ext_resource type="FontFile" uid="uid://ccbx2464o1chg" path="res://fonts/sevenboxregular_2.ttf" id="5_tiqdc"]
+[ext_resource type="Script" path="res://mouse_drag.gd" id="6_cbd4a"]
+[ext_resource type="Texture2D" uid="uid://dmd03udy1pdub" path="res://sprites/scratch/kitty cat face.png" id="7_sdia2"]
+[ext_resource type="Shader" uid="uid://d3sl5pn0q52q0" path="res://debug.tres" id="8_0k2ql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwpbw"]
+resource_local_to_scene = true
+shader = ExtResource("8_0k2ql")
+shader_parameter/base = Color(1, 0, 0, 0.164706)
+shader_parameter/squares = Color(1, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_28qya"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.288973, 0.806084, 0.967681, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.796078, 0.858824, 0.988235, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xatrc"]
+gradient = SubResource("Gradient_28qya")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="White23" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(13.5, -27.5)
+scale = Vector2(14.6875, 14.3125)
+texture = ExtResource("1_84c1p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.360784)
+clip_contents = false
+offset_left = -101.0
+offset_top = -137.0
+offset_right = 119.0
+offset_bottom = -20.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_left = 1.0
+offset_right = 225.0
+offset_bottom = 117.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 224.0
+offset_bottom = 116.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_top = -2.0
+offset_right = 224.0
+offset_bottom = 115.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 226.0
+offset_bottom = 115.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 225.0
+offset_bottom = 115.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="RichTextLabel"]
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_right = 226.0
+offset_bottom = 117.0
+theme_override_fonts/normal_font = ExtResource("4_j1uq1")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780"
+scroll_active = false
+
+[node name="White16" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 7)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White17" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 17)
+scale = Vector2(10.4375, 0.249999)
+texture = ExtResource("1_84c1p")
+
+[node name="White18" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 27)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White19" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 37)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White20" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 47)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White21" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 57)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White22" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 67)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="White23" type="Sprite2D" parent="RichTextLabel"]
+position = Vector2(82.5, 77)
+scale = Vector2(10.4375, 0.25)
+texture = ExtResource("1_84c1p")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+visible = false
+clip_contents = false
+offset_left = -64.0
+offset_top = 8.0
+offset_right = 3.0
+offset_bottom = 125.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world."
+scroll_active = false
+
+[node name="Boundsguide" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_dosp0")
+
+[node name="FroggieFocusBuddyDemo" type="Sprite2D" parent="."]
+texture = ExtResource("5_rfd2s")
+
+[node name="textbox" type="Node2D" parent="."]
+
+[node name="White24" type="Sprite2D" parent="textbox"]
+modulate = Color(0, 0, 0, 0.509804)
+position = Vector2(-21.5, 82)
+scale = Vector2(11.3125, 2)
+texture = ExtResource("1_84c1p")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="textbox"]
+modulate = Color(0, 0, 0, 1)
+clip_contents = false
+offset_left = -110.0
+offset_top = 68.0
+offset_right = 109.0
+offset_bottom = 103.0
+theme_override_fonts/normal_font = ExtResource("5_tiqdc")
+theme_override_font_sizes/normal_font_size = 10
+text = "Wow! this is a text box example!
+isn't talking so much fun?
+the feds will never find me here uwu"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="textbox"]
+clip_contents = false
+offset_left = -109.0
+offset_top = 67.0
+offset_right = 110.0
+offset_bottom = 102.0
+theme_override_fonts/normal_font = ExtResource("5_tiqdc")
+theme_override_font_sizes/normal_font_size = 10
+text = "Wow! this is a text box example!
+isn't talking so much fun?
+the feds will never find me here uwu"
+fit_content = true
+scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+script = ExtResource("6_cbd4a")
+
+[node name="ClickPolygon" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(128, 128, 128, 111, 115, 111, 115, -115, -114, -115, -114, -1, -128, -1, -128, 114, -65, 114, -65, 128)
+
+[node name="KittyCatFace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-105, -111)
+scale = Vector2(4.33333, 4.375)
+texture = ExtResource("7_sdia2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_pwpbw")
+offset_left = -154.0
+offset_top = -166.0
+offset_right = 188.0
+offset_bottom = 178.0
+mouse_default_cursor_shape = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+clip_contents = false
+offset_left = -102.0
+offset_top = -128.0
+offset_right = 137.0
+offset_bottom = 117.0
+theme_override_fonts/normal_font = ExtResource("5_tiqdc")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780
+FLAT ON THE ROAD WITHOUT A CARE IN THE WORLD
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+\"WALTZ, BAD NYMPH, FOR QUICK JIGS VEX.\"
+\"SPHINX OF BLACK QUARTZ, JUDGE MY VOW.\"
+\"HOW VEXINGLY QUICK DAFT ZEBRAS JUMP!\"
+\"PACK MY BOX WITH FIVE DOZEN LIQUOR JUGS.\"
+fLaT On tHe rOaD WiThOuT A CaRe iN ThE WoRlD
+ThE QuIcK BrOwN FoX JuMpS OvEr tHe lAzY DoG
+\"wAlTz, BaD NyMpH, fOr qUiCk jIgS VeX.\"
+\"sPhInX Of bLaCk qUaRtZ, jUdGe mY VoW.\"
+\"hOw vExInGlY QuIcK DaFt zEbRaS JuMp!\"
+\"PaCk mY BoX WiTh fIvE DoZeN LiQuOr jUgS.\"
+abcdefghijklmnopqrstuvwxyz 1234567890
+ABCDEFGHIJKLMNOPQRSTUVWXYZ _+-=!@#$%^&*(){}[]"
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -101.0
+offset_top = -129.0
+offset_right = 138.0
+offset_bottom = 116.0
+theme_override_fonts/normal_font = ExtResource("5_tiqdc")
+theme_override_font_sizes/normal_font_size = 10
+text = "Flat on the road without a care in the world
+The quick brown fox jumps over the lazy dog
+\"Waltz, bad nymph, for quick jigs vex.\"
+\"Sphinx of black quartz, judge my vow.\"
+\"How vexingly quick daft zebras jump!\"
+\"Pack my box with five dozen liquor jugs.\"
+@zold2012#zoomer$100.59123456789
+^123456*89{([0])} !@#$%^*()_-+=[]{}|/0;don't
+2+2=4 123456780
+FLAT ON THE ROAD WITHOUT A CARE IN THE WORLD
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+\"WALTZ, BAD NYMPH, FOR QUICK JIGS VEX.\"
+\"SPHINX OF BLACK QUARTZ, JUDGE MY VOW.\"
+\"HOW VEXINGLY QUICK DAFT ZEBRAS JUMP!\"
+\"PACK MY BOX WITH FIVE DOZEN LIQUOR JUGS.\"
+fLaT On tHe rOaD WiThOuT A CaRe iN ThE WoRlD
+ThE QuIcK BrOwN FoX JuMpS OvEr tHe lAzY DoG
+\"wAlTz, BaD NyMpH, fOr qUiCk jIgS VeX.\"
+\"sPhInX Of bLaCk qUaRtZ, jUdGe mY VoW.\"
+\"hOw vExInGlY QuIcK DaFt zEbRaS JuMp!\"
+\"PaCk mY BoX WiTh fIvE DoZeN LiQuOr jUgS.\"
+abcdefghijklmnopqrstuvwxyz 1234567890
+ABCDEFGHIJKLMNOPQRSTUVWXYZ _+-=!@#$%^&*(){}[]"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-157, -29)
+scale = Vector2(0.9, 0.9)
+texture = SubResource("GradientTexture2D_xatrc")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D"]
+position = Vector2(0, -25)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -6, -3, 0, 3, 0)

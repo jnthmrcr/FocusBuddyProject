@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c7ctomcipcaa"]
+
+[ext_resource type="FontFile" uid="uid://dbtiq5jt3nj1e" path="res://fonts/sevenboxthin.ttf" id="1_rs2ia"]
+[ext_resource type="StyleBox" uid="uid://c2eb6yj2q3hi4" path="res://new_style_box_flat.tres" id="1_s3gdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20c78"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_rs2ia")
+default_font_size = 10
+Tree/colors/font_outline_color = Color(0, 0, 0, 1)
+Tree/colors/relationship_line_color = Color(0.6, 0.6, 0.6, 1)
+Tree/constants/draw_guides = 0
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/outline_size = 2
+Tree/constants/v_separation = 1
+Tree/styles/button_pressed = ExtResource("1_s3gdu")
+Tree/styles/cursor = ExtResource("1_s3gdu")
+Tree/styles/cursor_unfocused = ExtResource("1_s3gdu")
+Tree/styles/custom_button = ExtResource("1_s3gdu")
+Tree/styles/custom_button_hover = ExtResource("1_s3gdu")
+Tree/styles/custom_button_pressed = ExtResource("1_s3gdu")
+Tree/styles/focus = SubResource("StyleBoxFlat_20c78")
+Tree/styles/panel = ExtResource("1_s3gdu")
+Tree/styles/selected = ExtResource("1_s3gdu")
+Tree/styles/selected_focus = ExtResource("1_s3gdu")
+Tree/styles/title_button_hover = ExtResource("1_s3gdu")
+Tree/styles/title_button_normal = ExtResource("1_s3gdu")
+Tree/styles/title_button_pressed = ExtResource("1_s3gdu")

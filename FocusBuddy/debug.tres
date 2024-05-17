@@ -1,0 +1,220 @@
+[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://d3sl5pn0q52q0"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_46m8h"]
+input_name = "screen_pixel_size"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_taq8m"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_oab5k"]
+constant = 2.0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ylmbp"]
+parameter_name = "squares"
+default_value_enabled = true
+default_value = Color(1, 0, 1, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_e7ui8"]
+parameter_name = "base"
+default_value_enabled = true
+default_value = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_rvovp"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ahwo8"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(2, -2)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_snpt5"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+function = 3
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_rnyqt"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_0m828"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_c7prc"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_c113t"]
+size = Vector2(657.569, 393.08)
+expression = "int b1 = drawbox(pixel_count, uv);
+int b2 = drawbox(pixel_count, uv + (pixel_size * vec2(3,-3)));
+int b3 = drawbox(pixel_count, uv + (pixel_size * vec2(6,3)));
+int b4 = drawbox(pixel_count, uv + (pixel_size * vec2(9,6)));
+int b5 = 0;//drawbox(pixel_count, uv + (pixel_size * vec2(8,8)));
+int b6 = 0;//drawbox(pixel_count, uv + (pixel_size * vec2(10,6)));
+output = b1 + b2 + b3 + b4 + b5 + b6;"
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_7wit7"]
+size = Vector2(533.975, 187.365)
+expression = "int drawbox(vec2 count, vec2 coord) {
+	int x = mod(count.x * coord.x, 6.0) < 2.0?1:0;
+	int y = mod(count.y * coord.y, 6.0) < 2.0?1:0;
+	return min(x, y);
+}"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_v60ig"]
+size = Vector2(657.569, 393.08)
+expression = "int b1 = drawbox(pixel_count, uv);
+int b2 = drawbox(pixel_count, uv + (pixel_size * vec2(2,-2)));
+int b3 = drawbox(pixel_count, uv + (pixel_size * vec2(4,4)));
+int b4 = drawbox(pixel_count, uv + (pixel_size * vec2(6,2)));
+int b5 = drawbox(pixel_count, uv + (pixel_size * vec2(8,8)));
+int b6 = drawbox(pixel_count, uv + (pixel_size * vec2(10,6)));
+output = b1 + b2 + b3 + b4 + b5 + b6;"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_vj6gc"]
+input_name = "screen_uv"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 base : source_color = vec4(1.000000, 0.000000, 0.000000, 1.000000);
+uniform vec4 squares : source_color = vec4(1.000000, 0.000000, 1.000000, 1.000000);
+
+
+// GlobalExpression:0
+	int drawbox(vec2 count, vec2 coord) {
+		int x = mod(count.x * coord.x, 6.0) < 2.0?1:0;
+		int y = mod(count.y * coord.y, 6.0) < 2.0?1:0;
+		return min(x, y);
+	}
+
+void fragment() {
+// ColorParameter:4
+	vec4 n_out4p0 = base;
+
+
+// ColorParameter:3
+	vec4 n_out3p0 = squares;
+
+
+// Input:17
+	vec2 n_out17p0 = SCREEN_PIXEL_SIZE;
+
+
+// FloatConstant:26
+	float n_out26p0 = 2.000000;
+
+
+// VectorOp:25
+	vec2 n_out25p0 = n_out17p0 * vec2(n_out26p0);
+
+
+// VectorFunc:47
+	vec2 n_out47p0 = 1.0 / (n_out25p0);
+
+
+// Input:7
+	vec2 n_out7p0 = SCREEN_UV;
+
+
+	int n_out61p0;
+// Expression:61
+	n_out61p0 = 0;
+	{
+		int b1 = drawbox(n_out47p0, n_out7p0);
+		int b2 = drawbox(n_out47p0, n_out7p0 + (n_out17p0 * vec2(3,-3)));
+		int b3 = drawbox(n_out47p0, n_out7p0 + (n_out17p0 * vec2(6,3)));
+		int b4 = drawbox(n_out47p0, n_out7p0 + (n_out17p0 * vec2(9,6)));
+		int b5 = 0;//drawbox(n_out47p0, n_out7p0 + (n_out17p0 * vec2(8,8)));
+		int b6 = 0;//drawbox(n_out47p0, n_out7p0 + (n_out17p0 * vec2(10,6)));
+		n_out61p0 = b1 + b2 + b3 + b4 + b5 + b6;
+	}
+
+
+// Mix:58
+	vec4 n_out58p0 = mix(n_out4p0, n_out3p0, float(n_out61p0));
+
+
+// VectorDecompose:59
+	float n_out59p0 = n_out58p0.x;
+	float n_out59p1 = n_out58p0.y;
+	float n_out59p2 = n_out58p0.z;
+	float n_out59p3 = n_out58p0.w;
+
+
+// VectorCompose:60
+	vec3 n_out60p0 = vec3(n_out59p0, n_out59p1, n_out59p2);
+
+
+// Output:0
+	COLOR.rgb = n_out60p0;
+	COLOR.a = n_out59p3;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(2320, -80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_ylmbp")
+nodes/fragment/3/position = Vector2(1380, -180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_e7ui8")
+nodes/fragment/4/position = Vector2(1380, -380)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_vj6gc")
+nodes/fragment/7/position = Vector2(-640, 160)
+nodes/fragment/17/node = SubResource("VisualShaderNodeInput_46m8h")
+nodes/fragment/17/position = Vector2(-680, -100)
+nodes/fragment/25/node = SubResource("VisualShaderNodeVectorOp_taq8m")
+nodes/fragment/25/position = Vector2(220, -240)
+nodes/fragment/26/node = SubResource("VisualShaderNodeFloatConstant_oab5k")
+nodes/fragment/26/position = Vector2(220, -320)
+nodes/fragment/40/node = SubResource("VisualShaderNodeVectorOp_rvovp")
+nodes/fragment/40/position = Vector2(380, 120)
+nodes/fragment/44/node = SubResource("VisualShaderNodeVectorOp_ahwo8")
+nodes/fragment/44/position = Vector2(220, 80)
+nodes/fragment/47/node = SubResource("VisualShaderNodeVectorFunc_snpt5")
+nodes/fragment/47/position = Vector2(380, -240)
+nodes/fragment/58/node = SubResource("VisualShaderNodeMix_rnyqt")
+nodes/fragment/58/position = Vector2(1800, -340)
+nodes/fragment/59/node = SubResource("VisualShaderNodeVectorDecompose_0m828")
+nodes/fragment/59/position = Vector2(2020, -300)
+nodes/fragment/60/node = SubResource("VisualShaderNodeVectorCompose_c7prc")
+nodes/fragment/60/position = Vector2(2240, -320)
+nodes/fragment/61/node = SubResource("VisualShaderNodeExpression_c113t")
+nodes/fragment/61/position = Vector2(680, -360)
+nodes/fragment/61/size = Vector2(657.569, 393.08)
+nodes/fragment/61/input_ports = "0,3,pixel_count;1,3,uv;2,3,pixel_size;"
+nodes/fragment/61/output_ports = "0,1,output;"
+nodes/fragment/61/expression = "int b1 = drawbox(pixel_count, uv);
+int b2 = drawbox(pixel_count, uv + (pixel_size * vec2(3,-3)));
+int b3 = drawbox(pixel_count, uv + (pixel_size * vec2(6,3)));
+int b4 = drawbox(pixel_count, uv + (pixel_size * vec2(9,6)));
+int b5 = 0;//drawbox(pixel_count, uv + (pixel_size * vec2(8,8)));
+int b6 = 0;//drawbox(pixel_count, uv + (pixel_size * vec2(10,6)));
+output = b1 + b2 + b3 + b4 + b5 + b6;"
+nodes/fragment/62/node = SubResource("VisualShaderNodeGlobalExpression_7wit7")
+nodes/fragment/62/position = Vector2(811.806, -1025.55)
+nodes/fragment/62/size = Vector2(533.975, 187.365)
+nodes/fragment/62/input_ports = ""
+nodes/fragment/62/output_ports = ""
+nodes/fragment/62/expression = "int drawbox(vec2 count, vec2 coord) {
+	int x = mod(count.x * coord.x, 6.0) < 2.0?1:0;
+	int y = mod(count.y * coord.y, 6.0) < 2.0?1:0;
+	return min(x, y);
+}"
+nodes/fragment/63/node = SubResource("VisualShaderNodeExpression_v60ig")
+nodes/fragment/63/position = Vector2(680, 60)
+nodes/fragment/63/size = Vector2(657.569, 393.08)
+nodes/fragment/63/input_ports = "0,3,pixel_count;1,3,uv;2,3,pixel_size;"
+nodes/fragment/63/output_ports = "0,1,output;"
+nodes/fragment/63/expression = "int b1 = drawbox(pixel_count, uv);
+int b2 = drawbox(pixel_count, uv + (pixel_size * vec2(2,-2)));
+int b3 = drawbox(pixel_count, uv + (pixel_size * vec2(4,4)));
+int b4 = drawbox(pixel_count, uv + (pixel_size * vec2(6,2)));
+int b5 = drawbox(pixel_count, uv + (pixel_size * vec2(8,8)));
+int b6 = drawbox(pixel_count, uv + (pixel_size * vec2(10,6)));
+output = b1 + b2 + b3 + b4 + b5 + b6;"
+nodes/fragment/connections = PackedInt32Array(17, 0, 25, 0, 26, 0, 25, 1, 7, 0, 40, 1, 44, 0, 40, 0, 17, 0, 44, 0, 25, 0, 47, 0, 4, 0, 58, 0, 3, 0, 58, 1, 58, 0, 59, 0, 59, 0, 60, 0, 59, 1, 60, 1, 59, 2, 60, 2, 47, 0, 61, 0, 7, 0, 61, 1, 61, 0, 58, 2, 60, 0, 0, 0, 59, 3, 0, 1, 17, 0, 61, 2)
